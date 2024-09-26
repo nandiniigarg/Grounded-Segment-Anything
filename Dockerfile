@@ -21,12 +21,13 @@ RUN apt-get update && apt-get install --no-install-recommends wget ffmpeg=7:* \
     vim=2:* -y \
     && apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 WORKDIR /home/appuser/Grounded-Segment-Anything
-RUN python -m pip install --no-cache-dir -e segment_anything
+RUN python3 -m pip install --no-cache-dir -e segment_anything
 
 # When using build isolation, PyTorch with newer CUDA is installed and can't compile GroundingDINO
-RUN python -m pip install --no-cache-dir wheel
-RUN python -m pip install --no-cache-dir --no-build-isolation -e GroundingDINO
-RUN pip install numpy==1.26.4 supervision
+RUN python3 -m pip install --no-cache-dir wheel
+RUN pip3 install numpy==1.26.4 supervision
+RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu116
+RUN python3 GroundingDINO/setup.py install
 
 WORKDIR /home/appuser
 RUN pip install --no-cache-dir diffusers[torch]==0.15.1 opencv-python==4.7.0.72 \
