@@ -1,5 +1,8 @@
-torch
-torchvision
+torch@https://download.pytorch.org/whl/cu116/torch-1.13.0%2Bcu116-cp310-cp310-linux_x86_64.whl#sha256=31218793334775bc63af95e1ea3b18694eaa902aeea5fd9b3215abaf22eafad0
+torchvision@https://download.pytorch.org/whl/cu116
+torchaudio@https://download.pytorch.org/whl/cu116
+setuptools
+wheel
 transformers
 addict
 yapf
