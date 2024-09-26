@@ -1,6 +1,6 @@
 torch@https://download.pytorch.org/whl/cu116/torch-1.13.0%2Bcu116-cp310-cp310-linux_x86_64.whl#sha256=31218793334775bc63af95e1ea3b18694eaa902aeea5fd9b3215abaf22eafad0
-torchvision@https://download.pytorch.org/whl/cu116/torchvision-0.14.1%2Bcu116-cp310-cp310-linux_x86_64.whl#sha256=fcb58d41bf95dd8b85d388fa1969d1dcad55eec055e317981d653a05c4ca6d8b
-torchaudio@https://download.pytorch.org/whl/cu116/torchaudio-0.13.1%2Bcu116-cp310-cp310-linux_x86_64.whl#sha256=def44b171501dcb994f5a1948d559662705705ee3be6f781bd11efcd3bbfcd30
+torchvision@https://download.pytorch.org/whl/cu116/torchvision-0.14.0%2Bcu116-cp310-cp310-linux_x86_64.whl#sha256=eb95ba2c2f15e7bae2c2d98a8bde5bf0be1a1c170c81948151ea64868ed0e987
+torchaudio@https://download.pytorch.org/whl/cu116/torchaudio-0.13.0%2Bcu116-cp310-cp310-linux_x86_64.whl#sha256=055d6a82b080d68f30174821f05daa18a31a4d5a61e368b8621b21c226edd5c3
 setuptools
 wheel
 transformers
