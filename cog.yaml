@@ -3,7 +3,7 @@
 
 build:
   gpu: true
-  cuda: "11.7"
+  cuda: "11.6"
   system_packages:
     - "libgl1-mesa-glx"
     - "libglib2.0-0"
