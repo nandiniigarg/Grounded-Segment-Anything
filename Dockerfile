@@ -7,7 +7,11 @@ ARG TORCH_ARCH=
 ENV AM_I_DOCKER True
 ENV BUILD_WITH_CUDA "${USE_CUDA}"
 ENV TORCH_CUDA_ARCH_LIST "${TORCH_ARCH}"
-ENV CUDA_HOME /usr/local/cuda-11.6/
+
+# Need some extra paths for Sagemaker
+ENV CUDA_HOME=/usr/local/cuda-11.6 
+ENV PATH=/opt/conda/bin:/usr/local/nvidia/bin:/usr/local/cuda-11.6/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV LD_LIBRARY_PATH=/usr/local/cuda-11.6/lib64:$LD_LIBRARY_PATH
 
 RUN mkdir -p /home/appuser/Grounded-Segment-Anything
 COPY . /home/appuser/Grounded-Segment-Anything/
@@ -16,13 +20,13 @@ RUN apt-get update && apt-get install --no-install-recommends wget ffmpeg=7:* \
     libsm6=2:* libxext6=2:* git=1:* nano=2.* \
     vim=2:* -y \
     && apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /home/appuser/Grounded-Segment-Anything
 RUN python -m pip install --no-cache-dir -e segment_anything
 
 # When using build isolation, PyTorch with newer CUDA is installed and can't compile GroundingDINO
 RUN python -m pip install --no-cache-dir wheel
 RUN python -m pip install --no-cache-dir --no-build-isolation -e GroundingDINO
+RUN pip install numpy==1.26.4 supervision
 
 WORKDIR /home/appuser
 RUN pip install --no-cache-dir diffusers[torch]==0.15.1 opencv-python==4.7.0.72 \
